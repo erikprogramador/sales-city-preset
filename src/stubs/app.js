@@ -1,5 +1,5 @@
 import './bootstrap';
-import Vue from 'Vue';
+import Vue from 'vue';
 import ExampleComponent from './components/ExampleComponent';
 
 Vue.component('example-component', ExampleComponent);
