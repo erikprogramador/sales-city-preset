@@ -1,0 +1,76 @@
+<?php
+
+namespace SalesCity\Preset;
+
+use Illuminate\Foundation\Console\Presets\Preset as LaravelPreset;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Arr;
+use Illuminate\Filesystem\Filesystem;
+
+class Preset extends LaravelPreset
+{
+    public static function install()
+    {
+        static::cleanScriptsDirectory();
+        static::cleanStylesDirectory();
+        static::updatePackages();
+        static::updateMix();
+        static::updateScripts();
+        static::updateStyles();
+        static::ensureComponentDirectoryExists();
+        static::updateComponents();
+    }
+
+    public static function cleanScriptsDirectory()
+    {
+        File::cleanDirectory(resource_path('assets/js'));
+    }
+
+    public static function cleanStylesDirectory()
+    {
+        File::cleanDirectory(resource_path('assets/sass'));
+    }
+
+    public static function updateMix()
+    {
+        copy(__DIR__ . '/stubs/webpack.mix.js', base_path('webpack.mix.js'));
+    }
+
+    public static function updateScripts()
+    {
+        copy(__DIR__ . '/stubs/bootstrap.js', resource_path('assets/js/bootstrap.js'));
+        copy(__DIR__ . '/stubs/app.js', resource_path('assets/js/app.js'));
+    }
+
+    public static function updateStyles()
+    {
+        copy(__DIR__ . '/stubs/app.scss', resource_path('assets/sass/app.scss'));
+    }
+
+    public static function updateComponents()
+    {
+        copy(__DIR__ . '/stubs/ExampleComponent.vue', resource_path('assets/js/components/ExampleComponent.vue'));
+    }
+
+    public static function updatePackageArray($packages)
+    {
+        return array_merge(
+            ['laravel-mix-tailwind' => '^0.1.0'],
+            Arr::except($packages, [
+                'popper.js',
+                'lodash',
+                'jquery',
+                'bootstrap'
+            ])
+        );
+    }
+
+    protected static function ensureComponentDirectoryExists()
+    {
+        $filesystem = new Filesystem;
+
+        if (!$filesystem->isDirectory($directory = resource_path('assets/js/components'))) {
+            $filesystem->makeDirectory($directory, 0755, true);
+        }
+    }
+}

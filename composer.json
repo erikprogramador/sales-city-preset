@@ -1,0 +1,23 @@
+{
+  "name": "erikprogramador/sales-city-preset",
+  "keywords": ["laravel", "laravel preset", "sales city"],
+  "description": "The default Sales City Laravel preset",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Erik Vanderlei Fernandes",
+      "email": "erik@salescity.com.br"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "SalesCity\\Preset\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": ["SalesCity\\Preset\\SalesCityServiceProvider"]
+    }
+  }
+}
