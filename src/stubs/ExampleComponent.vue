@@ -1,11 +1,11 @@
 <template>
-    <div>Sales City</div>
+  <div>Sales City</div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {}
   }
-};
+}
 </script>
