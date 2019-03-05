@@ -56,9 +56,9 @@ class Preset extends LaravelPreset
 
     public static function updateScripts()
     {
-        copy(__DIR__ . '/stubs/bootstrap.js', resource_path('js/bootstrap.js'));
-        copy(__DIR__ . '/stubs/dom-work.js', resource_path('js/dom-work.js'));
-        copy(__DIR__ . '/stubs/app.js', resource_path('js/app.js'));
+        copy(__DIR__ . '/stubs/js/bootstrap.js', resource_path('js/bootstrap.js'));
+        copy(__DIR__ . '/stubs/js/dom-work.js', resource_path('js/dom-work.js'));
+        copy(__DIR__ . '/stubs/js/app.js', resource_path('js/app.js'));
     }
 
     public static function updateRootDirectory()
@@ -69,12 +69,12 @@ class Preset extends LaravelPreset
 
     public static function updateStyles()
     {
-        copy(__DIR__ . '/stubs/app.scss', resource_path('sass/app.scss'));
+        copy(__DIR__ . '/stubs/scss/app.scss', resource_path('sass/app.scss'));
     }
 
     public static function updateComponents()
     {
-        copy(__DIR__ . '/stubs/ExampleComponent.vue', resource_path('js/components/ExampleComponent.vue'));
+        copy(__DIR__ . '/stubs/components/ExampleComponent.vue', resource_path('js/components/ExampleComponent.vue'));
     }
 
     public static function updateAuth()
