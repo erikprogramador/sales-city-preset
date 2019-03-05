@@ -2,10 +2,10 @@
 
 namespace SalesCity\Preset;
 
-use Illuminate\Foundation\Console\Presets\Preset as LaravelPreset;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Foundation\Console\Presets\Preset as LaravelPreset;
 
 class Preset extends LaravelPreset
 {
@@ -14,6 +14,7 @@ class Preset extends LaravelPreset
         static::cleanScriptsDirectory();
         static::cleanStylesDirectory();
         static::cleanRootDirectory();
+        static::cleanTestFiles();
         static::updatePackages();
         static::updateRootDirectory();
         static::updateMix();
@@ -21,6 +22,10 @@ class Preset extends LaravelPreset
         static::updateStyles();
         static::ensureComponentDirectoryExists();
         static::updateComponents();
+        static::updateAuth();
+        static::updateImages();
+        static::updateTestFiles();
+        static::updateHelperFiles();
     }
 
     public static function cleanScriptsDirectory()
@@ -38,6 +43,12 @@ class Preset extends LaravelPreset
         unlink(base_path('.editorconfig'));
     }
 
+    public static function cleanTestFiles()
+    {
+        unlink(base_path('phpunit.xml'));
+        unlink(base_path('tests/TestCase.php'));
+    }
+
     public static function updateMix()
     {
         copy(__DIR__ . '/stubs/webpack.mix.js', base_path('webpack.mix.js'));
@@ -46,6 +57,7 @@ class Preset extends LaravelPreset
     public static function updateScripts()
     {
         copy(__DIR__ . '/stubs/bootstrap.js', resource_path('js/bootstrap.js'));
+        copy(__DIR__ . '/stubs/dom-work.js', resource_path('js/dom-work.js'));
         copy(__DIR__ . '/stubs/app.js', resource_path('js/app.js'));
     }
 
@@ -63,6 +75,36 @@ class Preset extends LaravelPreset
     public static function updateComponents()
     {
         copy(__DIR__ . '/stubs/ExampleComponent.vue', resource_path('js/components/ExampleComponent.vue'));
+    }
+
+    public static function updateAuth()
+    {
+        copy(__DIR__ . '/stubs/auth/Controllers/HomeController.php', app_path('Http/Controllers/HomeController.php'));
+
+        file_put_contents(
+            base_path('routes/web.php'),
+            "Route::view('/', 'welcome')->name('welcome');\n\nAuth::routes();\n\nRoute::get('home', 'HomeController')->name('home')->middleware(['auth']);\n\n",
+            FILE_APPEND
+        );
+
+        (new Filesystem)->copyDirectory(__DIR__ . '/stubs/auth/views', resource_path('views'));
+    }
+
+    public static function updateImages()
+    {
+        (new Filesystem)->copyDirectory(__DIR__ . '/stubs/images', public_path('images'));
+    }
+
+    public static function updateTestFiles()
+    {
+        copy(__DIR__ . '/stubs/tests/TestCase.php', base_path('tests/TestCase.php'));
+        copy(__DIR__ . '/stubs/tests/functions.php', base_path('tests/functions.php'));
+        copy(__DIR__ . '/stubs/tests/phpunit.xml', base_path('phpunit.xml'));
+    }
+
+    public static function updateHelperFiles()
+    {
+        copy(__DIR__ . '/stubs/helpers.php', config_path('functions.php'));
     }
 
     public static function updatePackageArray($packages)
