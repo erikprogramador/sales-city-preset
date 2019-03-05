@@ -13,7 +13,9 @@ class Preset extends LaravelPreset
     {
         static::cleanScriptsDirectory();
         static::cleanStylesDirectory();
+        static::cleanRootDirectory();
         static::updatePackages();
+        static::updateRootDirectory();
         static::updateMix();
         static::updateScripts();
         static::updateStyles();
@@ -31,6 +33,11 @@ class Preset extends LaravelPreset
         File::cleanDirectory(resource_path('sass'));
     }
 
+    public static function cleanRootDirectory()
+    {
+        unlink(base_path('.editorconfig'));
+    }
+
     public static function updateMix()
     {
         copy(__DIR__ . '/stubs/webpack.mix.js', base_path('webpack.mix.js'));
@@ -40,6 +47,12 @@ class Preset extends LaravelPreset
     {
         copy(__DIR__ . '/stubs/bootstrap.js', resource_path('js/bootstrap.js'));
         copy(__DIR__ . '/stubs/app.js', resource_path('js/app.js'));
+    }
+
+    public static function updateRootDirectory()
+    {
+        copy(__DIR__ . '/stubs/tailwind.js', base_path('tailwind.js'));
+        copy(__DIR__ . '/stubs/.editorconfig', base_path('.editorconfig'));
     }
 
     public static function updateStyles()
