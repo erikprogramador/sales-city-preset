@@ -19,7 +19,9 @@ let colors = {
   sales: '#6574cd',
   'sales-light': '#7886d7',
   'sales-lighter': '#b2b7ff',
-  'sales-lightest': '#e6e8ff'
+  'sales-lightest': '#e6e8ff',
+
+  danger: '#E3342F'
 }
 
 let spacing = {
@@ -53,6 +55,7 @@ module.exports = {
 
   fonts: {
     sans: [
+      'Nunito',
       'system-ui',
       'BlinkMacSystemFont',
       '-apple-system',
