@@ -23,12 +23,12 @@ class Preset extends LaravelPreset
 
     public static function cleanScriptsDirectory()
     {
-        File::cleanDirectory(resource_path('assets/js'));
+        File::cleanDirectory(resource_path('js'));
     }
 
     public static function cleanStylesDirectory()
     {
-        File::cleanDirectory(resource_path('assets/sass'));
+        File::cleanDirectory(resource_path('sass'));
     }
 
     public static function updateMix()
@@ -38,24 +38,24 @@ class Preset extends LaravelPreset
 
     public static function updateScripts()
     {
-        copy(__DIR__ . '/stubs/bootstrap.js', resource_path('assets/js/bootstrap.js'));
-        copy(__DIR__ . '/stubs/app.js', resource_path('assets/js/app.js'));
+        copy(__DIR__ . '/stubs/bootstrap.js', resource_path('js/bootstrap.js'));
+        copy(__DIR__ . '/stubs/app.js', resource_path('js/app.js'));
     }
 
     public static function updateStyles()
     {
-        copy(__DIR__ . '/stubs/app.scss', resource_path('assets/sass/app.scss'));
+        copy(__DIR__ . '/stubs/app.scss', resource_path('sass/app.scss'));
     }
 
     public static function updateComponents()
     {
-        copy(__DIR__ . '/stubs/ExampleComponent.vue', resource_path('assets/js/components/ExampleComponent.vue'));
+        copy(__DIR__ . '/stubs/ExampleComponent.vue', resource_path('js/components/ExampleComponent.vue'));
     }
 
     public static function updatePackageArray($packages)
     {
         return array_merge(
-            ['laravel-mix-tailwind' => '^0.1.0'],
+            ['tailwindcss' => '^0.7.4'],
             Arr::except($packages, [
                 'popper.js',
                 'lodash',
@@ -69,7 +69,7 @@ class Preset extends LaravelPreset
     {
         $filesystem = new Filesystem;
 
-        if (!$filesystem->isDirectory($directory = resource_path('assets/js/components'))) {
+        if (!$filesystem->isDirectory($directory = resource_path('js/components'))) {
             $filesystem->makeDirectory($directory, 0755, true);
         }
     }
