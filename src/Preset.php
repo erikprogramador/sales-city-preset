@@ -68,7 +68,11 @@ class Preset extends LaravelPreset
     public static function updatePackageArray($packages)
     {
         return array_merge(
-            ['tailwindcss' => '^0.7.4'],
+            [
+                'tailwindcss' => '^0.7.4',
+                'glob-all' => '^3.1.*',
+                'purgecss-webpack-plugin' => '^1.4.*',
+            ],
             Arr::except($packages, [
                 'popper.js',
                 'lodash',
