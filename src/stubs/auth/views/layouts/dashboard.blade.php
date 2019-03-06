@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container mt-4">
-        <div class="-mx-4 flex">
-            <nav class="w-full md:w-1/5 mx-4">
+        <div class="mx-0 md:-mx-4 flex flex-col md:flex-row px-4 md:px-0">
+            <nav class="w-full md:w-1/5 md:mx-4">
                 <div class="mb-6">
                     <a class="text-sales-dark hover:text-sales font-semibold flex items-center mb-3" href="#">
                         <div class="mdi mdi-home-outline mr-2 text-xl"></div>
@@ -17,7 +17,7 @@
                 </div>
             </nav>
 
-            <main class="w-full md:w-4/5 mx-4">
+            <main class="w-full md:w-4/5 md:mx-4">
                 @yield('main')
             </main>
         </div>
