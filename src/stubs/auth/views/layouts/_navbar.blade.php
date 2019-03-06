@@ -1,6 +1,6 @@
 <header>
     <div class="container">
-        <div class="flex items-center justify-between py-5 px-5 sm:px-5">
+        <div class="flex items-center justify-between py-5 px-5 sm:px-0">
             {{-- Replace with logo --}}
             <a class="no-underline text-sales-darkest text-xl font-semibold tracking-wide" href="{{ route('welcome') }}">
                 <img src="{{ asset('images/logos/logo.svg') }}" alt="{{ config('app.name') }}" class="w-12">
