@@ -57,8 +57,10 @@ class Preset extends LaravelPreset
     public static function updateScripts()
     {
         copy(__DIR__ . '/stubs/js/bootstrap.js', resource_path('js/bootstrap.js'));
-        copy(__DIR__ . '/stubs/js/dom-work.js', resource_path('js/dom-work.js'));
         copy(__DIR__ . '/stubs/js/app.js', resource_path('js/app.js'));
+        copy(__DIR__ . '/stubs/js/dom-work.js', resource_path('js/dom-work.js'));
+
+        (new Filesystem)->copyDirectory(__DIR__ . '/stubs/elements', resource_path('js/elements'));
     }
 
     public static function updateRootDirectory()
