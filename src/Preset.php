@@ -121,6 +121,7 @@ class Preset extends LaravelPreset
     {
         return array_merge(
             [
+                '@mdi/font' => '^3.5.95',
                 'tailwindcss' => '^0.7.4',
                 'glob-all' => '^3.1.*',
                 'purgecss-webpack-plugin' => '^1.4.*',

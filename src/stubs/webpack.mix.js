@@ -17,6 +17,7 @@ mix
     postCss: [tailwindcss('./tailwind.js')]
   })
   .extract(['vue', 'axios'])
+  .copy('node_modules/@mdi/font/fonts/', 'public/fonts')
   .version()
 
 if (mix.inProduction()) {

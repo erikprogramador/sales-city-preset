@@ -1,3 +1,5 @@
+@import '~@mdi/font/scss/materialdesignicons';
+
 @tailwind preflight;
 
 @tailwind components;
@@ -5,41 +7,41 @@
 @tailwind utilities;
 
 a {
-    @apply .no-underline .text-sales;
+  @apply .no-underline .text-sales;
 
-    &:hover {
-        @apply text-sales-dark;
-    }
+  &:hover {
+    @apply text-sales-dark;
+  }
 }
 
 .btn {
-    @apply .border .border-sales-light .bg-sales-light .px-6 .py-2 .text-white .rounded .font-semibold .tracking-wide;
+  @apply .border .border-sales-light .bg-sales-light .px-6 .py-2 .text-white .rounded .font-semibold .tracking-wide;
 
-    &:hover {
-        @apply .bg-sales .border-sales;
-    }
+  &:hover {
+    @apply .bg-sales .border-sales;
+  }
 }
 
 .form {
-    label {
-        @apply .block .font-semibold .text-sales-darkest .text-sm .mb-2;
-    }
+  label {
+    @apply .block .font-semibold .text-sales-darkest .text-sm .mb-2;
+  }
 
+  input {
+    @apply .block .rounded .border .border-grey-lighter .bg-grey-lighter .w-full .p-3 .outline-none;
+
+    &:focus {
+      @apply .border-grey-light .bg-transparent;
+    }
+  }
+
+  &.has-errors {
     input {
-        @apply .block .rounded .border .border-grey-lighter .bg-grey-lighter .w-full .p-3 .outline-none;
-
-        &:focus {
-            @apply .border-grey-light .bg-transparent;
-        }
+      @apply .border-danger;
     }
+  }
 
-    &.has-errors {
-        input {
-            @apply .border-danger;
-        }
-    }
-
-    .error {
-        @apply .block .mt-2 .text-danger .font-semibold .text-sm;
-    }
+  .error {
+    @apply .block .mt-2 .text-danger .font-semibold .text-sm;
+  }
 }
