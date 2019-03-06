@@ -75,6 +75,7 @@ class Preset extends LaravelPreset
     public static function updateComponents()
     {
         copy(__DIR__ . '/stubs/components/ExampleComponent.vue', resource_path('js/components/ExampleComponent.vue'));
+        copy(__DIR__ . '/stubs/components/Notification.vue', resource_path('js/components/Notification.vue'));
     }
 
     public static function updateAuth()

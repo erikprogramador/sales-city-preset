@@ -28,6 +28,12 @@
         @include('layouts._navbar')
 
         @yield('content')
+
+        <notification data-message="{{ session('flash') }}"></notification>
+
+        @php
+            session()->forget('flash')
+        @endphp
     </div>
 </body>
 </html>
