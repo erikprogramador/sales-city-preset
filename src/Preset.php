@@ -26,6 +26,7 @@ class Preset extends LaravelPreset
         static::updateImages();
         static::updateTestFiles();
         static::updateHelperFiles();
+        static::updateTableSeeders();
     }
 
     public static function cleanScriptsDirectory()
@@ -108,6 +109,12 @@ class Preset extends LaravelPreset
     public static function updateHelperFiles()
     {
         copy(__DIR__ . '/stubs/helpers.php', config_path('functions.php'));
+    }
+
+    public static function updateTableSeeders()
+    {
+        copy(__DIR__ . '/stubs/auth/Seeders/DatabaseSeeder.php', database_path('seeds/DatabaseSeeder.php'));
+        copy(__DIR__ . '/stubs/auth/Seeders/UsersTableSeeder.php', database_path('seeds/UsersTableSeeder.php'));
     }
 
     public static function updatePackageArray($packages)
