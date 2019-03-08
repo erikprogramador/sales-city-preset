@@ -22,6 +22,7 @@ This preset contains:
 ## Flash notification
 
 Update your composer file adding those lines on the **autoload** section on your composer.json file
+
 `"files": [ "config/functions.php" ]`
 
 Then run `composer dump -o`
@@ -29,6 +30,7 @@ Then run `composer dump -o`
 ## PHP Testing
 
 Update your composer file adding those lines on the **autoload-dev** section on your composer.json file
+
 `"files": [ "tests/functions.php" ]`
 
 Then run `composer dump -o`
